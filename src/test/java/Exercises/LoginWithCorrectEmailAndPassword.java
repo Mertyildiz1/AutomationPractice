@@ -59,6 +59,5 @@ public class LoginWithCorrectEmailAndPassword {
         // Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
         WebElement accDeletedText = driver.findElement(By.xpath("//*[.='Account Deleted!']"));
         Assert.assertTrue(accDeletedText.isDisplayed());
-
     }
 }

@@ -38,11 +38,5 @@ public class VerifyTestCasesPage extends TestBase {
 
         WebElement testCasesText = driver.findElement(By.xpath("//b[text()='Test Cases']"));
         Assert.assertTrue(testCasesText.isDisplayed());
-
-
-
-
-
-
     }
 }

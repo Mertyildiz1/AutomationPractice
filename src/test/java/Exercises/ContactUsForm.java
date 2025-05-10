@@ -78,9 +78,5 @@ public class ContactUsForm extends TestBase {
         WebElement featuresItemsText2 = driver.findElement(By.xpath("//h2[@class='title text-center']"));
         Assert.assertTrue(featuresItemsText2.isDisplayed());
         Assert.assertEquals(expectedTitle,actualTitle);
-
-
-
-
     }
 }

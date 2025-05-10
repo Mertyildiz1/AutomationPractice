@@ -48,10 +48,5 @@ public class RegisterUserWithExistingEmail extends TestBase {
         WebElement actualExistText = driver.findElement(By.xpath("//*[.='Email Address already exist!']"));
         Assert.assertTrue(actualExistText.isDisplayed());
         Assert.assertEquals(expectedExistText,actualExistText.getText());
-
-
-
-
-
     }
 }

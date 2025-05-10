@@ -48,7 +48,5 @@ public class LoginWithIncorrectEmailAndPassword extends TestBase {
 
         Assert.assertTrue(errorText.isDisplayed());
         Assert.assertEquals(expectedErrorText,errorText.getText());
-
-
     }
 }

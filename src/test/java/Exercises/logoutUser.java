@@ -62,7 +62,5 @@ public class logoutUser {
 
         String expectedLoginPageTitle = "Automation Exercise - Signup / Login";
         Assert.assertEquals(expectedLoginPageTitle,driver.getTitle());
-
-
     }
 }
