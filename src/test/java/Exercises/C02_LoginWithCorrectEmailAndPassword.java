@@ -12,9 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class logoutUser {
+public class C02_LoginWithCorrectEmailAndPassword {
     @Test
-    public void test04(){
+    public void LoginWithCorrectEmailAndPassword() {
         String url = "http://automationexercise.com";
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -52,15 +52,12 @@ public class logoutUser {
         wait.until(ExpectedConditions.visibilityOf(loggedInAs));
         Assert.assertTrue(loggedInAs.isDisplayed());
 
-        //Click 'Logout' button
-        WebElement logoutButton = driver.findElement(By.xpath("//*[@class='fa fa-lock']"));
-        logoutButton.click();
+        //Click 'Delete Account' button
+        WebElement deleteAccButton = driver.findElement(By.xpath("//*[.=' Delete Account']"));
+        deleteAccButton.click();
 
-        //Verify that user is navigated to login page
-        WebElement homeButton = driver.findElement(By.xpath("//*[text()=' Home']"));
-        Assert.assertTrue(homeButton.isDisplayed());
-
-        String expectedLoginPageTitle = "Automation Exercise - Signup / Login";
-        Assert.assertEquals(expectedLoginPageTitle,driver.getTitle());
+        // Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+        WebElement accDeletedText = driver.findElement(By.xpath("//*[.='Account Deleted!']"));
+        Assert.assertTrue(accDeletedText.isDisplayed());
     }
 }

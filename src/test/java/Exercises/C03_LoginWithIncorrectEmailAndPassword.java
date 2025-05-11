@@ -12,7 +12,7 @@ import utilities.TestBase;
 
 import java.time.Duration;
 
-public class LoginWithIncorrectEmailAndPassword extends TestBase {
+public class C03_LoginWithIncorrectEmailAndPassword extends TestBase {
     @Test
     public void test03(){
         Faker faker = new Faker();

@@ -10,9 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.TestBase;
 
 import java.time.Duration;
-import java.util.List;
 
-public class VerifyAllProductsAndProductDetailPage extends TestBase {
+public class C08_VerifyAllProductsAndProductDetailPage extends TestBase {
     @Test
     public void test08() throws InterruptedException {
         Actions action = new Actions(driver);

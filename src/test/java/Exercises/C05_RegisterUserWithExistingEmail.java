@@ -9,10 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.TestBase;
 
-import java.security.Key;
 import java.time.Duration;
 
-public class RegisterUserWithExistingEmail extends TestBase {
+public class C05_RegisterUserWithExistingEmail extends TestBase {
     @Test
     public void test05() {
 

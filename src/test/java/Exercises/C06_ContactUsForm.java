@@ -12,7 +12,7 @@ import utilities.TestBase;
 
 import java.time.Duration;
 
-public class ContactUsForm extends TestBase {
+public class C06_ContactUsForm extends TestBase {
     @Test
     public void test06() throws InterruptedException {
         Faker faker = new Faker();

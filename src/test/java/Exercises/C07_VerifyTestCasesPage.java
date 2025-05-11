@@ -10,7 +10,7 @@ import utilities.TestBase;
 
 import java.time.Duration;
 
-public class VerifyTestCasesPage extends TestBase {
+public class C07_VerifyTestCasesPage extends TestBase {
     @Test
     public void test07() {
         // Navigate to url 'http://automationexercise.com'
