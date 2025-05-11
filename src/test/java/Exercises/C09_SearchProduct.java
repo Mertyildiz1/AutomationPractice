@@ -64,9 +64,5 @@ public class C09_SearchProduct extends TestBase {
         WebElement productNameMoveTo = driver.findElement(By.xpath("(//p)[3]"));
         Assert.assertTrue(productNameMoveTo.isDisplayed());
         Assert.assertEquals(productName,productNameMoveTo.getText());
-
-
-
-
     }
 }
