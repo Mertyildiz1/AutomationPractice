@@ -97,5 +97,7 @@ public class C01_RegisterUser {
         // Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
         WebElement accDeletedText = driver.findElement(By.xpath("//*[.='Account Deleted!']"));
         Assert.assertTrue(accDeletedText.isDisplayed());
+        WebElement DeleteAccCntinueButton = driver.findElement(By.xpath("//a[.='Continue']"));
+        DeleteAccCntinueButton.click();
     }
 }
