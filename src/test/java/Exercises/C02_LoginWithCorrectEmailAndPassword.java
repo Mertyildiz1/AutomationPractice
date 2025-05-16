@@ -9,18 +9,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.TestBase;
 
 import java.time.Duration;
 
-public class C02_LoginWithCorrectEmailAndPassword {
+public class C02_LoginWithCorrectEmailAndPassword extends TestBase {
     @Test
     public void LoginWithCorrectEmailAndPassword() {
-        String url = "http://automationexercise.com";
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
         // Navigate to url 'http://automationexercise.com'
+        String url = "http://automationexercise.com";
         driver.get(url);
 
         //Verify that home page is visible successfully

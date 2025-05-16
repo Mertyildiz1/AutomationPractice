@@ -5,65 +5,41 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.TestBase;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.security.Key;
 import java.time.Duration;
 
-public class C14_PlaceOrderRegisterWhileCheckout extends TestBase {
-    @Test
-    public void test14() throws InterruptedException, AWTException {
+public class C15_PlaceOrderRegisterBeforeCheckout extends TestBase {
 
+    @Test
+    public void test15() throws AWTException {
+
+        Robot robot = new Robot();
         Faker faker = new Faker();
         Actions actions = new Actions(driver);
-        Robot robot = new Robot();
 
         // Navigate to url 'http://automationexercise.com'
         String url = "http://automationexercise.com";
         driver.get(url);
 
         // Verify that home page is visible successfully
-        WebElement featuresItemsText = driver.findElement(By.xpath("//h2[@class='title text-center']"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOf(featuresItemsText));
-        Assert.assertTrue(featuresItemsText.isDisplayed());
+        String pageExpectedTitle = "Automation Exercise";
+        String pageActualTitle = driver.getTitle();
+        Assert.assertEquals(pageExpectedTitle,pageActualTitle);
 
-        String expectedTitle = "Automation Exercise";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        WebElement homePageTestCasesButton = driver.findElement(By.xpath("//*[.=' Test Cases']"));
+        Assert.assertTrue(homePageTestCasesButton.isDisplayed());
 
-        // Add products to cart
-        WebElement brandBıba = driver.findElement(By.xpath("(//span[@class='pull-right'])[8]"));
-        actions.scrollToElement(brandBıba).perform();
-        WebElement blueTopImg = driver.findElement(By.xpath("(//img[@alt='ecommerce website products'])[1]"));
-        actions.moveToElement(blueTopImg);
-        WebElement addToCartInfo = driver.findElement(By.xpath("(//a[text()='Add to cart'])[1]"));
-        wait.until(ExpectedConditions.elementToBeClickable(addToCartInfo));
-        addToCartInfo.click();
-
-        // Click 'Cart' button
-        WebElement viewCartButton = driver.findElement(By.xpath("//*[text()='View Cart']"));
-        wait.until(ExpectedConditions.visibilityOf(viewCartButton));
-        viewCartButton.click();
-
-        // Verify that cart page is displayed
-        WebElement shoppingCartText = driver.findElement(By.xpath("//li[@class='active']"));
-        wait.until(ExpectedConditions.visibilityOf(shoppingCartText));
-        Assert.assertTrue(shoppingCartText.isDisplayed());
-
-        // Click Proceed To Checkout
-        WebElement proceedToCheckoutButton = driver.findElement(By.xpath("//a[@class='btn btn-default check_out']"));
-        proceedToCheckoutButton.click();
-
-        // Click 'Register / Login' button
-        WebElement checkoutRegisterLoginButton = driver.findElement(By.xpath("//*[text()='Register / Login']"));
-        wait.until(ExpectedConditions.visibilityOf(checkoutRegisterLoginButton));
-        checkoutRegisterLoginButton.click();
+        // Click on 'Signup / Login' button
+        WebElement signUpLoginButton = driver.findElement(By.xpath("//i[@class='fa fa-lock']"));
+        signUpLoginButton.click();
 
         // Fill all details in Signup and create account
         WebElement nameArea = driver.findElement(By.xpath("//input[@name='name']"));
@@ -97,6 +73,7 @@ public class C14_PlaceOrderRegisterWhileCheckout extends TestBase {
         WebElement mobileNumberInput = driver.findElement(By.id("mobile_number"));
         mobileNumberInput.sendKeys(mobileNumber);
 
+        //Click 'Create Account button'
         WebElement createAccButton = driver.findElement(By.xpath("//*[.='Create Account']"));
         createAccButton.click();
 
@@ -108,20 +85,31 @@ public class C14_PlaceOrderRegisterWhileCheckout extends TestBase {
         WebElement continueButton = driver.findElement(By.xpath("//a[@class='btn btn-primary']"));
         continueButton.click();
 
-        // Verify ' Logged in as username' at top
+        //Verify that 'Logged in as username' is visible
         WebElement loggedInAsUser = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
         Assert.assertTrue(loggedInAsUser.isDisplayed());
-        String expectedLoggedText = "Logged in as Mert";
-        String actualLoggedText = loggedInAsUser.getText();
-        Assert.assertEquals(expectedLoggedText,actualLoggedText);
 
-        //Click 'Cart' button
-        WebElement cartButton = driver.findElement(By.xpath("//*[text()=' Cart']"));
-        cartButton.click();
+        // Add products to cart
+        WebElement productsButton = driver.findElement(By.xpath("//i[@class='material-icons card_travel']"));
+        productsButton.click();
 
-        // Click 'Proceed To Checkout' button
-        driver.findElement(By.xpath("//a[@class='btn btn-default check_out']")).click();
+        WebElement brandBıba = driver.findElement(By.xpath("(//span[@class='pull-right'])[8]"));
+        actions.scrollToElement(brandBıba).perform();
 
+        WebElement blueTopAddToCartButton = driver.findElement(By.xpath("(//a[@class='btn btn-default add-to-cart'])[1]"));
+        blueTopAddToCartButton.click();
+
+        // Click 'Cart' button
+        WebElement viewCartButton = driver.findElement(By.xpath("//*[text()='View Cart']"));
+        viewCartButton.click();
+
+        // Verify that cart page is displayed
+        WebElement shoppingCartText = driver.findElement(By.xpath("//*[.='Shopping Cart']"));
+        Assert.assertTrue(shoppingCartText.isDisplayed());
+
+        // Click Proceed To Checkout
+        WebElement proceedToCheckoutButton = driver.findElement(By.xpath("//*[.='Proceed To Checkout']"));
+        proceedToCheckoutButton.click();
 
         // Verify Address Details and Review Your Order
         String name = driver.findElement(By.xpath("//li[@class='address_firstname address_lastname']")).getText();
@@ -155,7 +143,6 @@ public class C14_PlaceOrderRegisterWhileCheckout extends TestBase {
         // Click 'Pay and Confirm Order' button
         WebElement payAndConfirmButton = driver.findElement(By.id("submit"));
         payAndConfirmButton.click();
-
 
         // Verify success message 'Congratulations! Your order has been confirmed!'
         WebElement verifySuccess = driver.findElement(By.xpath("(//div//p)[1]"));

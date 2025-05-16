@@ -8,20 +8,17 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.TestBase;
 
 import java.time.Duration;
 
-public class C01_RegisterUser {
+public class C01_RegisterUser extends TestBase {
 
     @Test
     public void RegisterUser() {
         Faker faker = new Faker();
 
         // Navigate to url 'http://automationexercise.com'
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
         String url = "http://automationexercise.com";
         driver.get(url);
 
@@ -38,7 +35,6 @@ public class C01_RegisterUser {
         signUpLoginButton.click();
 
         //Verify 'New User Signup!' is visible
-
         String expectedLoginTitle = "Automation Exercise - Signup / Login";
         String actualLoginTitle = driver.getTitle();
         Assert.assertEquals(expectedLoginTitle,actualLoginTitle);
