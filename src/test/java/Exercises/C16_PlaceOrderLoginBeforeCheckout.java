@@ -5,24 +5,23 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.TestBase;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.security.Key;
 import java.time.Duration;
 
-public class C15_PlaceOrderRegisterBeforeCheckout extends TestBase {
-
+public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
     @Test
-    public void test15() throws AWTException {
+    public void test16() throws InterruptedException, AWTException {
 
         Robot robot = new Robot();
         Faker faker = new Faker();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Actions actions = new Actions(driver);
 
         // Navigate to url 'http://automationexercise.com'
@@ -42,16 +41,18 @@ public class C15_PlaceOrderRegisterBeforeCheckout extends TestBase {
         signUpLoginButton.click();
 
         // Fill all details in Signup and create account
+        String emailAdress = faker.internet().emailAddress();
         WebElement nameArea = driver.findElement(By.xpath("//input[@name='name']"));
         nameArea.sendKeys("Mert",
-                Keys.TAB,faker.internet().emailAddress());
+                Keys.TAB,emailAdress);
 
         WebElement signUp = driver.findElement(By.xpath("//button[.='Signup']"));
         signUp.click();
 
         WebElement mrsMrSelect = driver.findElement(By.id("id_gender1"));
         mrsMrSelect.click();
-        mrsMrSelect.sendKeys(Keys.TAB,Keys.TAB,faker.internet().password(),Keys.TAB,"30",Keys.TAB,"July",Keys.TAB,"2001");
+        String password = faker.internet().password();
+        mrsMrSelect.sendKeys(Keys.TAB,Keys.TAB,password,Keys.TAB,"30",Keys.TAB,"July",Keys.TAB,"2001");
 
         WebElement sufons = driver.findElement(By.id("newsletter"));
         sufons.click();
@@ -85,13 +86,24 @@ public class C15_PlaceOrderRegisterBeforeCheckout extends TestBase {
         WebElement continueButton = driver.findElement(By.xpath("//a[@class='btn btn-primary']"));
         continueButton.click();
 
-        //Verify that 'Logged in as username' is visible
-        WebElement loggedInAsUser = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
-        Assert.assertTrue(loggedInAsUser.isDisplayed());
+        // Click Logout Button
+        WebElement logoutButton = driver.findElement(By.xpath("//*[text()=' Logout']"));
+        logoutButton.click();
+
+        // Login
+        WebElement loginEmailArea = driver.findElement(By.name("email"));
+        loginEmailArea.sendKeys(emailAdress,Keys.TAB,password,Keys.ENTER);
+
+        // Verify that 'Logged in as username' is visible
+        WebElement loggedInAs = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
+        wait.until(ExpectedConditions.visibilityOf(loggedInAs));
+        Assert.assertTrue(loggedInAs.isDisplayed());
 
         // Add products to cart
         WebElement productsButton = driver.findElement(By.xpath("//i[@class='material-icons card_travel']"));
         productsButton.click();
+
+        Thread.sleep(1000);
 
         WebElement brandBıba = driver.findElement(By.xpath("(//span[@class='pull-right'])[8]"));
         actions.scrollToElement(brandBıba).perform();
@@ -162,13 +174,5 @@ public class C15_PlaceOrderRegisterBeforeCheckout extends TestBase {
         Assert.assertTrue(accDeletedText.isDisplayed());
         WebElement DeleteAccContinueButton = driver.findElement(By.xpath("//a[.='Continue']"));
         DeleteAccContinueButton.click();
-
-
-
-
-
-
-
-
     }
 }

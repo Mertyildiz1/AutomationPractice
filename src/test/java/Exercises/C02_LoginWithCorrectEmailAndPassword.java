@@ -31,7 +31,6 @@ public class C02_LoginWithCorrectEmailAndPassword extends TestBase {
         Assert.assertEquals(expectedTitle,actualTitle);
 
         // Click on 'Signup / Login' button
-
         WebElement signUpLoginButton = driver.findElement(By.xpath("//*[text()=' Signup / Login']"));
         signUpLoginButton.click();
 
