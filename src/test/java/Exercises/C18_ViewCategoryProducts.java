@@ -31,7 +31,7 @@ public class C18_ViewCategoryProducts extends TestBase {
         // Verify that category page is displayed and confirm text 'WOMEN -  DRESS PRODUCTS'
         WebElement womenDressProducts = driver.findElement(By.xpath("//h2[@class='title text-center']"));
         assertTrue(womenDressProducts.isDisplayed());
-        String expectedWomenDressPruductsText = "WOMEN -  DRESS PRODUCTS";
+        String expectedWomenDressPruductsText = "WOMEN - DRESS PRODUCTS";
         String actualWomenDressProductsText = womenDressProducts.getText();
         assertEquals(expectedWomenDressPruductsText,actualWomenDressProductsText);
 

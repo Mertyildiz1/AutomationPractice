@@ -51,7 +51,7 @@ public class C06_ContactUsForm extends TestBase {
 
         // Upload file
         String everyoneOwnPath = System.getProperty("user.home");
-        String commonFilePath = "\\Pictures\\Screenshots\\Ekran görüntüsü 2025-05-10 142810.png";
+        String commonFilePath = "\\Downloads\\test.txt";
         String filePath = everyoneOwnPath + commonFilePath;
         WebElement fileUploadInput = driver.findElement(By.xpath("(//input[@class='form-control'])[4]"));
         fileUploadInput.sendKeys(filePath);
