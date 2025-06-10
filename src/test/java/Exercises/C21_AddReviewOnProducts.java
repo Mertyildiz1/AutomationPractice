@@ -38,7 +38,7 @@ public class C21_AddReviewOnProducts extends TestBase {
 
         String expectedAllProductsText = "ALL PRODUCTS";
         String actualAllProductsText = allProductsWE.getText();
-        assertEquals(expectedAllProductsText,actualAllProductsText);
+        assertEquals(expectedAllProductsText, actualAllProductsText);
 
         // Click on 'View Product' button
         WebElement stylishDressWE = driver.findElement(By.xpath("//*[text()='Rs. 1500']"));
@@ -56,7 +56,7 @@ public class C21_AddReviewOnProducts extends TestBase {
         actions.scrollToElement(subscriptionWE).perform();
 
         WebElement nameArea = driver.findElement(By.id("name"));
-        nameArea.sendKeys(faker.name().firstName(), Keys.TAB,faker.internet().emailAddress(),Keys.TAB,faker.lorem().sentence(10));
+        nameArea.sendKeys(faker.name().firstName(), Keys.TAB, faker.internet().emailAddress(), Keys.TAB, faker.lorem().sentence(10));
 
         //  Click 'Submit' button
         WebElement submitButton = driver.findElement(By.id("button-review"));
@@ -71,6 +71,6 @@ public class C21_AddReviewOnProducts extends TestBase {
 
         String expectedTyForReviewText = "Thank you for your review.";
         String actualTyForReviewText = tyForReviewWE.getText();
-        Assert.assertEquals(expectedTyForReviewText,actualTyForReviewText);
+        Assert.assertEquals(expectedTyForReviewText, actualTyForReviewText);
     }
 }

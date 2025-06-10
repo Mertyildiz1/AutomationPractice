@@ -25,7 +25,7 @@ public class C01_RegisterUser extends TestBase {
         // Verify that home page is visible successfully
         String pageExpectedTitle = "Automation Exercise";
         String pageActualTitle = driver.getTitle();
-        Assert.assertEquals(pageExpectedTitle,pageActualTitle);
+        Assert.assertEquals(pageExpectedTitle, pageActualTitle);
 
         WebElement homePageTestCasesButton = driver.findElement(By.xpath("//*[.=' Test Cases']"));
         Assert.assertTrue(homePageTestCasesButton.isDisplayed());
@@ -37,12 +37,12 @@ public class C01_RegisterUser extends TestBase {
         //Verify 'New User Signup!' is visible
         String expectedLoginTitle = "Automation Exercise - Signup / Login";
         String actualLoginTitle = driver.getTitle();
-        Assert.assertEquals(expectedLoginTitle,actualLoginTitle);
+        Assert.assertEquals(expectedLoginTitle, actualLoginTitle);
 
         //Enter name and email address
         WebElement nameArea = driver.findElement(By.xpath("//input[@name='name']"));
         nameArea.sendKeys(faker.name().firstName(),
-                Keys.TAB,faker.internet().emailAddress());
+                Keys.TAB, faker.internet().emailAddress());
 
         //Click 'Signup' button
         WebElement signUp = driver.findElement(By.xpath("//button[.='Signup']"));
@@ -55,17 +55,17 @@ public class C01_RegisterUser extends TestBase {
         //Fill details: Title, Name, Email, Password, Date of birth
         WebElement mrsMrSelect = driver.findElement(By.id("id_gender1"));
         mrsMrSelect.click();
-        mrsMrSelect.sendKeys(Keys.TAB,Keys.TAB,faker.internet().password(),Keys.TAB,"30",Keys.TAB,"July",Keys.TAB,"2001");
+        mrsMrSelect.sendKeys(Keys.TAB, Keys.TAB, faker.internet().password(), Keys.TAB, "30", Keys.TAB, "July", Keys.TAB, "2001");
 
         //Select checkbox 'Sign up for our newsletter!'
         WebElement sufons = driver.findElement(By.id("newsletter"));
         sufons.click();
-        sufons.sendKeys(Keys.TAB,Keys.SPACE);
+        sufons.sendKeys(Keys.TAB, Keys.SPACE);
 
         // Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
         WebElement firstName = driver.findElement(By.id("first_name"));
-        firstName.sendKeys(faker.name().firstName(),Keys.TAB,faker.name().lastName(),Keys.TAB,faker.company().name(),Keys.TAB,faker.address().fullAddress(),Keys.TAB,
-                Keys.TAB,faker.address().country(),Keys.TAB,faker.address().state(),Keys.TAB,faker.address().city(),Keys.TAB,faker.address().zipCode());
+        firstName.sendKeys(faker.name().firstName(), Keys.TAB, faker.name().lastName(), Keys.TAB, faker.company().name(), Keys.TAB, faker.address().fullAddress(), Keys.TAB,
+                Keys.TAB, faker.address().country(), Keys.TAB, faker.address().state(), Keys.TAB, faker.address().city(), Keys.TAB, faker.address().zipCode());
         WebElement mobileNumberInput = driver.findElement(By.id("mobile_number"));
         mobileNumberInput.sendKeys(faker.phoneNumber().phoneNumber());
 
@@ -76,7 +76,7 @@ public class C01_RegisterUser extends TestBase {
         // Verify that 'ACCOUNT CREATED!' is visible
         WebElement accCreated = driver.findElement(By.xpath("//*[.='Account Created!']"));
         Assert.assertTrue(accCreated.isDisplayed());
-        Assert.assertEquals("Automation Exercise - Account Created",driver.getTitle());
+        Assert.assertEquals("Automation Exercise - Account Created", driver.getTitle());
 
         // Click 'Continue' button
         WebElement continueButton = driver.findElement(By.xpath("//*[.='Continue']"));

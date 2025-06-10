@@ -35,7 +35,7 @@ public class C22_AddToCartFromRecommendedItems extends TestBase {
 
         String expectedRecommendedItemsText = "RECOMMENDED ITEMS";
         String actualRecommendedItemsText = recommendedItemsWE.getText();
-        Assert.assertEquals(expectedRecommendedItemsText,actualRecommendedItemsText);
+        Assert.assertEquals(expectedRecommendedItemsText, actualRecommendedItemsText);
 
         // Click on 'Add To Cart' on Recommended product
         WebElement menTshirtWE = driver.findElement(By.xpath("(//a[@data-product-id='2'])[3]"));
@@ -53,6 +53,6 @@ public class C22_AddToCartFromRecommendedItems extends TestBase {
 
         String expectedItemName = "Men Tshirt";
         String actualItemName = driver.findElement(By.xpath("//h4//a")).getText();
-        Assert.assertEquals(expectedItemName,actualItemName);
+        Assert.assertEquals(expectedItemName, actualItemName);
     }
 }

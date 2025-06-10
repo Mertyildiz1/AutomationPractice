@@ -27,7 +27,7 @@ public class C23_VerifyAddressDetailsInCheckoutPage extends TestBase {
         // Verify that home page is visible successfully
         String pageExpectedTitle = "Automation Exercise";
         String pageActualTitle = driver.getTitle();
-        Assert.assertEquals(pageExpectedTitle,pageActualTitle);
+        Assert.assertEquals(pageExpectedTitle, pageActualTitle);
 
         WebElement homePageTestCasesButton = driver.findElement(By.xpath("//*[.=' Test Cases']"));
         Assert.assertTrue(homePageTestCasesButton.isDisplayed());
@@ -39,18 +39,18 @@ public class C23_VerifyAddressDetailsInCheckoutPage extends TestBase {
         // Fill all details in Signup and create account
         WebElement nameArea = driver.findElement(By.xpath("//input[@name='name']"));
         nameArea.sendKeys("Mert",
-                Keys.TAB,faker.internet().emailAddress());
+                Keys.TAB, faker.internet().emailAddress());
 
         WebElement signUp = driver.findElement(By.xpath("//button[.='Signup']"));
         signUp.click();
 
         WebElement mrsMrSelect = driver.findElement(By.id("id_gender1"));
         mrsMrSelect.click();
-        mrsMrSelect.sendKeys(Keys.TAB,Keys.TAB,faker.internet().password(),Keys.TAB,"30",Keys.TAB,"July",Keys.TAB,"2001");
+        mrsMrSelect.sendKeys(Keys.TAB, Keys.TAB, faker.internet().password(), Keys.TAB, "30", Keys.TAB, "July", Keys.TAB, "2001");
 
         WebElement sufons = driver.findElement(By.id("newsletter"));
         sufons.click();
-        sufons.sendKeys(Keys.TAB,Keys.SPACE);
+        sufons.sendKeys(Keys.TAB, Keys.SPACE);
 
         String firstNameInput = faker.name().firstName();
         String lastNameInput = faker.name().lastName();
@@ -63,8 +63,8 @@ public class C23_VerifyAddressDetailsInCheckoutPage extends TestBase {
         String mobileNumber = faker.phoneNumber().phoneNumber();
 
         WebElement firstName = driver.findElement(By.id("first_name"));
-        firstName.sendKeys(firstNameInput,Keys.TAB,lastNameInput,Keys.TAB,componyName,Keys.TAB,fullAddress,Keys.TAB,
-                Keys.TAB,addressCountry,Keys.TAB,addressState,Keys.TAB,addressCity,Keys.TAB,addressZipCode);
+        firstName.sendKeys(firstNameInput, Keys.TAB, lastNameInput, Keys.TAB, componyName, Keys.TAB, fullAddress, Keys.TAB,
+                Keys.TAB, addressCountry, Keys.TAB, addressState, Keys.TAB, addressCity, Keys.TAB, addressZipCode);
         WebElement mobileNumberInput = driver.findElement(By.id("mobile_number"));
         mobileNumberInput.sendKeys(mobileNumber);
 
@@ -75,7 +75,7 @@ public class C23_VerifyAddressDetailsInCheckoutPage extends TestBase {
         // Verify 'ACCOUNT CREATED!' and click 'Continue' button
         WebElement accCreated = driver.findElement(By.xpath("//*[.='Account Created!']"));
         Assert.assertTrue(accCreated.isDisplayed());
-        Assert.assertEquals("Automation Exercise - Account Created",driver.getTitle());
+        Assert.assertEquals("Automation Exercise - Account Created", driver.getTitle());
 
         WebElement continueButton = driver.findElement(By.xpath("//a[@class='btn btn-primary']"));
         continueButton.click();
@@ -108,21 +108,21 @@ public class C23_VerifyAddressDetailsInCheckoutPage extends TestBase {
 
         // Verify that the delivery address is same address filled at the time registration of account - Verify that the billing address is same address filled at the time registration of account
         String name = driver.findElement(By.xpath("//li[@class='address_firstname address_lastname']")).getText();
-        String expectedBillName = "Mr. "+firstNameInput+" "+lastNameInput;
-        Assert.assertEquals(expectedBillName,name);
+        String expectedBillName = "Mr. " + firstNameInput + " " + lastNameInput;
+        Assert.assertEquals(expectedBillName, name);
 
         String compony = driver.findElement(By.xpath("(//li[@class='address_address1 address_address2'])[1]")).getText();
-        Assert.assertEquals(componyName,compony);
+        Assert.assertEquals(componyName, compony);
 
         String address = driver.findElement(By.xpath("(//li[@class='address_address1 address_address2'])[2]")).getText();
-        Assert.assertEquals(fullAddress,address);
+        Assert.assertEquals(fullAddress, address);
 
         String stateCityZip = driver.findElement(By.xpath("(//li[@class='address_city address_state_name address_postcode'])[1]")).getText();
-        String expectedBillStateCityZip = addressCity+" "+addressState+" "+addressZipCode;
-        Assert.assertEquals(expectedBillStateCityZip,stateCityZip);
+        String expectedBillStateCityZip = addressCity + " " + addressState + " " + addressZipCode;
+        Assert.assertEquals(expectedBillStateCityZip, stateCityZip);
 
         String BillCellNumber = driver.findElement(By.xpath("//li[@class='address_phone']")).getText();
-        Assert.assertEquals(mobileNumber,BillCellNumber);
+        Assert.assertEquals(mobileNumber, BillCellNumber);
 
         // Click 'Delete Account' button
         WebElement deleteAccButton = driver.findElement(By.xpath("//i[@class='fa fa-trash-o']"));

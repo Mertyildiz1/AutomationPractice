@@ -17,7 +17,7 @@ public class C12_AddProductsInCart extends TestBase {
     @Test
     public void test12() throws InterruptedException {
         Actions actions = new Actions(driver);
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         // Navigate to url 'http://automationexercise.com'
         String url = "http://automationexercise.com";
         driver.get(url);
@@ -29,7 +29,7 @@ public class C12_AddProductsInCart extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Products' button
         WebElement productsButton = driver.findElement(By.cssSelector(".material-icons.card_travel"));
@@ -62,40 +62,40 @@ public class C12_AddProductsInCart extends TestBase {
 
         // Verify both products are added to Cart
         List<WebElement> productsInCart = driver.findElements(By.xpath("//h4//a"));
-        int sayac = 0 ;
-        for (int i = 0; i < productsInCart.size() ; i++) {
+        int sayac = 0;
+        for (int i = 0; i < productsInCart.size(); i++) {
             productsInCart.get(i).click();
             Thread.sleep(1500);
             driver.navigate().back();
             productsInCart = driver.findElements(By.xpath("//h4//a"));
             sayac++;
         }
-        Assert.assertEquals(2,sayac);
+        Assert.assertEquals(2, sayac);
 
         // Verify their prices, quantity and total price
         WebElement blueTopPrice = driver.findElement(By.xpath("(//td[@class='cart_price'])[1]"));
         String expectedBlueTopPrice = "Rs. 500";
-        Assert.assertEquals(expectedBlueTopPrice,blueTopPrice.getText());
+        Assert.assertEquals(expectedBlueTopPrice, blueTopPrice.getText());
 
         WebElement menTshirtPrice = driver.findElement(By.xpath("(//td[@class='cart_price'])[2]"));
         String expectedMenTshirtPrice = "Rs. 400";
-        Assert.assertEquals(expectedMenTshirtPrice,menTshirtPrice.getText());
+        Assert.assertEquals(expectedMenTshirtPrice, menTshirtPrice.getText());
 
         WebElement blueTopQuantity = driver.findElement(By.xpath("(//button[@class='disabled'])[1]"));
         String expectedBlueTopQuantity = "1";
-        Assert.assertEquals(expectedBlueTopQuantity,blueTopQuantity.getText());
+        Assert.assertEquals(expectedBlueTopQuantity, blueTopQuantity.getText());
 
         WebElement menTshirtQuantity = driver.findElement(By.xpath("(//button[@class='disabled'])[2]"));
         String expectedMenTshirtQuantity = "1";
-        Assert.assertEquals(expectedMenTshirtQuantity,menTshirtQuantity.getText());
+        Assert.assertEquals(expectedMenTshirtQuantity, menTshirtQuantity.getText());
 
         WebElement totalPrice1 = driver.findElement(By.xpath("(//p[@class='cart_total_price'])[1]"));
         String actualTotalPrice1 = totalPrice1.getText();
         String expectedTotalPrice1 = "Rs. 500";
-        Assert.assertEquals(expectedTotalPrice1,actualTotalPrice1);
+        Assert.assertEquals(expectedTotalPrice1, actualTotalPrice1);
         WebElement totalPrice2 = driver.findElement(By.xpath("(//p[@class='cart_total_price'])[2]"));
-        String actualTotalPrice2= totalPrice2.getText();
+        String actualTotalPrice2 = totalPrice2.getText();
         String expectedTotalPrice2 = "Rs. 400";
-        Assert.assertEquals(expectedTotalPrice2,actualTotalPrice2);
+        Assert.assertEquals(expectedTotalPrice2, actualTotalPrice2);
     }
 }

@@ -15,23 +15,22 @@ import java.time.Duration;
 
 public class C04_LogoutUser extends TestBase {
     @Test
-    public void test04(){
+    public void test04() {
         String url = "http://automationexercise.com";
         // Navigate to url 'http://automationexercise.com'
         driver.get(url);
 
         //Verify that home page is visible successfully
         WebElement featuresItemsText = driver.findElement(By.xpath("//h2[@class='title text-center']"));
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOf(featuresItemsText));
         Assert.assertTrue(featuresItemsText.isDisplayed());
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Signup / Login' button
-
         WebElement signUpLoginButton = driver.findElement(By.xpath("//*[text()=' Signup / Login']"));
         signUpLoginButton.click();
 
@@ -42,7 +41,7 @@ public class C04_LogoutUser extends TestBase {
 
         //Enter correct email address and password
         WebElement emailArea = driver.findElement(By.xpath("//*[@type='email']"));
-        emailArea.sendKeys("1yildizmert@gmail.com", Keys.TAB,"test123456",Keys.TAB,Keys.ENTER);
+        emailArea.sendKeys("1yildizmert@gmail.com", Keys.TAB, "test123456", Keys.TAB, Keys.ENTER);
 
         //Verify that 'Logged in as username' is visible
         WebElement loggedInAs = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
@@ -54,10 +53,10 @@ public class C04_LogoutUser extends TestBase {
         logoutButton.click();
 
         //Verify that user is navigated to login page
-        WebElement homeButton = driver.findElement(By.xpath("//*[text()=' Home']"));
-        Assert.assertTrue(homeButton.isDisplayed());
+        loginToYourAccText = driver.findElement(By.xpath("//*[text()='Login to your account']"));
+        Assert.assertTrue(loginToYourAccText.isDisplayed());;
 
         String expectedLoginPageTitle = "Automation Exercise - Signup / Login";
-        Assert.assertEquals(expectedLoginPageTitle,driver.getTitle());
+        Assert.assertEquals(expectedLoginPageTitle, driver.getTitle());
     }
 }

@@ -31,7 +31,7 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
         // Verify that home page is visible successfully
         String pageExpectedTitle = "Automation Exercise";
         String pageActualTitle = driver.getTitle();
-        Assert.assertEquals(pageExpectedTitle,pageActualTitle);
+        Assert.assertEquals(pageExpectedTitle, pageActualTitle);
 
         WebElement homePageTestCasesButton = driver.findElement(By.xpath("//*[.=' Test Cases']"));
         Assert.assertTrue(homePageTestCasesButton.isDisplayed());
@@ -44,7 +44,7 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
         String emailAdress = faker.internet().emailAddress();
         WebElement nameArea = driver.findElement(By.xpath("//input[@name='name']"));
         nameArea.sendKeys("Mert",
-                Keys.TAB,emailAdress);
+                Keys.TAB, emailAdress);
 
         WebElement signUp = driver.findElement(By.xpath("//button[.='Signup']"));
         signUp.click();
@@ -52,11 +52,11 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
         WebElement mrsMrSelect = driver.findElement(By.id("id_gender1"));
         mrsMrSelect.click();
         String password = faker.internet().password();
-        mrsMrSelect.sendKeys(Keys.TAB,Keys.TAB,password,Keys.TAB,"30",Keys.TAB,"July",Keys.TAB,"2001");
+        mrsMrSelect.sendKeys(Keys.TAB, Keys.TAB, password, Keys.TAB, "30", Keys.TAB, "July", Keys.TAB, "2001");
 
         WebElement sufons = driver.findElement(By.id("newsletter"));
         sufons.click();
-        sufons.sendKeys(Keys.TAB,Keys.SPACE);
+        sufons.sendKeys(Keys.TAB, Keys.SPACE);
 
         String firstNameInput = faker.name().firstName();
         String lastNameInput = faker.name().lastName();
@@ -69,8 +69,8 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
         String mobileNumber = faker.phoneNumber().phoneNumber();
 
         WebElement firstName = driver.findElement(By.id("first_name"));
-        firstName.sendKeys(firstNameInput,Keys.TAB,lastNameInput,Keys.TAB,componyName,Keys.TAB,fullAddress,Keys.TAB,
-                Keys.TAB,addressCountry,Keys.TAB,addressState,Keys.TAB,addressCity,Keys.TAB,addressZipCode);
+        firstName.sendKeys(firstNameInput, Keys.TAB, lastNameInput, Keys.TAB, componyName, Keys.TAB, fullAddress, Keys.TAB,
+                Keys.TAB, addressCountry, Keys.TAB, addressState, Keys.TAB, addressCity, Keys.TAB, addressZipCode);
         WebElement mobileNumberInput = driver.findElement(By.id("mobile_number"));
         mobileNumberInput.sendKeys(mobileNumber);
 
@@ -81,7 +81,7 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
         // Verify 'ACCOUNT CREATED!' and click 'Continue' button
         WebElement accCreated = driver.findElement(By.xpath("//*[.='Account Created!']"));
         Assert.assertTrue(accCreated.isDisplayed());
-        Assert.assertEquals("Automation Exercise - Account Created",driver.getTitle());
+        Assert.assertEquals("Automation Exercise - Account Created", driver.getTitle());
 
         WebElement continueButton = driver.findElement(By.xpath("//a[@class='btn btn-primary']"));
         continueButton.click();
@@ -92,7 +92,7 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
 
         // Login
         WebElement loginEmailArea = driver.findElement(By.name("email"));
-        loginEmailArea.sendKeys(emailAdress,Keys.TAB,password,Keys.ENTER);
+        loginEmailArea.sendKeys(emailAdress, Keys.TAB, password, Keys.ENTER);
 
         // Verify that 'Logged in as username' is visible
         WebElement loggedInAs = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
@@ -125,32 +125,32 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
 
         // Verify Address Details and Review Your Order
         String name = driver.findElement(By.xpath("//li[@class='address_firstname address_lastname']")).getText();
-        String expectedBillName = "Mr. "+firstNameInput+" "+lastNameInput;
-        Assert.assertEquals(expectedBillName,name);
+        String expectedBillName = "Mr. " + firstNameInput + " " + lastNameInput;
+        Assert.assertEquals(expectedBillName, name);
 
         String compony = driver.findElement(By.xpath("(//li[@class='address_address1 address_address2'])[1]")).getText();
-        Assert.assertEquals(componyName,compony);
+        Assert.assertEquals(componyName, compony);
 
         String address = driver.findElement(By.xpath("(//li[@class='address_address1 address_address2'])[2]")).getText();
-        Assert.assertEquals(fullAddress,address);
+        Assert.assertEquals(fullAddress, address);
 
         String stateCityZip = driver.findElement(By.xpath("(//li[@class='address_city address_state_name address_postcode'])[1]")).getText();
-        String expectedBillStateCityZip = addressCity+" "+addressState+" "+addressZipCode;
-        Assert.assertEquals(expectedBillStateCityZip,stateCityZip);
+        String expectedBillStateCityZip = addressCity + " " + addressState + " " + addressZipCode;
+        Assert.assertEquals(expectedBillStateCityZip, stateCityZip);
 
         String BillCellNumber = driver.findElement(By.xpath("//li[@class='address_phone']")).getText();
-        Assert.assertEquals(mobileNumber,BillCellNumber);
+        Assert.assertEquals(mobileNumber, BillCellNumber);
 
         // Enter description in comment text area and click 'Place Order'
         robot.keyPress(KeyEvent.VK_END);
         robot.keyRelease(KeyEvent.VK_END);
 
         WebElement textArea = driver.findElement(By.xpath("//textarea[@class='form-control']"));
-        textArea.sendKeys(faker.lorem().sentence(10),Keys.TAB,Keys.ENTER);
+        textArea.sendKeys(faker.lorem().sentence(10), Keys.TAB, Keys.ENTER);
 
         // Enter payment details: Name on Card, Card Number, CVC, Expiration date
         WebElement nameOnCard = driver.findElement(By.name("name_on_card"));
-        nameOnCard.sendKeys(name,Keys.TAB,faker.business().creditCardNumber(),Keys.TAB,"311",Keys.TAB,"02",Keys.TAB,"2030",Keys.TAB);
+        nameOnCard.sendKeys(name, Keys.TAB, faker.business().creditCardNumber(), Keys.TAB, "311", Keys.TAB, "02", Keys.TAB, "2030", Keys.TAB);
 
         // Click 'Pay and Confirm Order' button
         WebElement payAndConfirmButton = driver.findElement(By.id("submit"));
@@ -160,7 +160,7 @@ public class C16_PlaceOrderLoginBeforeCheckout extends TestBase {
         WebElement verifySuccess = driver.findElement(By.xpath("(//div//p)[1]"));
         Assert.assertTrue(verifySuccess.isDisplayed());
         String expectedVerifySuccessText = "Congratulations! Your order has been confirmed!";
-        Assert.assertEquals(expectedVerifySuccessText,verifySuccess.getText());
+        Assert.assertEquals(expectedVerifySuccessText, verifySuccess.getText());
 
         // Click 'Delete Account' button
         robot.keyPress(KeyEvent.VK_HOME);

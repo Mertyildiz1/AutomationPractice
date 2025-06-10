@@ -30,7 +30,7 @@ public class C13_VerifyProductQuantityInCard extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click 'View Product' for any product on home page
         WebElement brandBıba = driver.findElement(By.xpath("(//span[@class='pull-right'])[8]"));
@@ -41,7 +41,7 @@ public class C13_VerifyProductQuantityInCard extends TestBase {
         // Increase quantity to 4
         WebElement quantityArea = driver.findElement(By.id("quantity"));
         quantityArea.click();
-        quantityArea.sendKeys(Keys.ARROW_UP,Keys.ARROW_UP,Keys.ARROW_UP);
+        quantityArea.sendKeys(Keys.ARROW_UP, Keys.ARROW_UP, Keys.ARROW_UP);
 
         // Click 'Add to cart' button
         WebElement addToCartButton = driver.findElement(By.xpath("//button[@class='btn btn-default cart']"));
@@ -56,6 +56,6 @@ public class C13_VerifyProductQuantityInCard extends TestBase {
         WebElement quantityInCart = driver.findElement(By.xpath("//button[@class='disabled']"));
         String actualQuantity = quantityInCart.getText();
         String expectedQuantity = "4";
-        Assert.assertEquals(expectedQuantity,actualQuantity);
+        Assert.assertEquals(expectedQuantity, actualQuantity);
     }
 }

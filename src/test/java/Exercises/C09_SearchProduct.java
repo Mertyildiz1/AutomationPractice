@@ -31,7 +31,7 @@ public class C09_SearchProduct extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Products' button
         WebElement productsButton = driver.findElement(By.cssSelector(".material-icons.card_travel"));
@@ -40,7 +40,7 @@ public class C09_SearchProduct extends TestBase {
         // Verify user is navigated to ALL PRODUCTS page successfully
         String expectedAllProductsTitle = "Automation Exercise - All Products";
         String actualAllProductsTitle = driver.getTitle();
-        Assert.assertEquals(expectedAllProductsTitle,actualAllProductsTitle);
+        Assert.assertEquals(expectedAllProductsTitle, actualAllProductsTitle);
 
         WebElement searchInputArea = driver.findElement(By.xpath("//input[@id='search_product']"));
         Assert.assertTrue(searchInputArea.isDisplayed());
@@ -55,7 +55,7 @@ public class C09_SearchProduct extends TestBase {
         WebElement searchedProducts = driver.findElement(By.xpath("//h2[@class='title text-center']"));
         Assert.assertTrue(searchedProducts.isDisplayed());
         String expectedText = "SEARCHED PRODUCTS";
-        Assert.assertEquals(expectedText,searchedProducts.getText());
+        Assert.assertEquals(expectedText, searchedProducts.getText());
 
         //Verify all the products related to search are visible
         WebElement brandBıba = driver.findElement(By.xpath("(//span[@class='pull-right'])[8]"));
@@ -63,6 +63,6 @@ public class C09_SearchProduct extends TestBase {
 
         WebElement productNameMoveTo = driver.findElement(By.xpath("(//p)[3]"));
         Assert.assertTrue(productNameMoveTo.isDisplayed());
-        Assert.assertEquals(productName,productNameMoveTo.getText());
+        Assert.assertEquals(productName, productNameMoveTo.getText());
     }
 }

@@ -27,7 +27,7 @@ public class C08_VerifyAllProductsAndProductDetailPage extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Products' button
         WebElement productsButton = driver.findElement(By.cssSelector(".material-icons.card_travel"));
@@ -36,7 +36,7 @@ public class C08_VerifyAllProductsAndProductDetailPage extends TestBase {
         // Verify user is navigated to ALL PRODUCTS page successfully
         String expectedAllProductsTitle = "Automation Exercise - All Products";
         String actualAllProductsTitle = driver.getTitle();
-        Assert.assertEquals(expectedAllProductsTitle,actualAllProductsTitle);
+        Assert.assertEquals(expectedAllProductsTitle, actualAllProductsTitle);
 
         WebElement searchInputArea = driver.findElement(By.xpath("//input[@id='search_product']"));
         Assert.assertTrue(searchInputArea.isDisplayed());
@@ -55,7 +55,7 @@ public class C08_VerifyAllProductsAndProductDetailPage extends TestBase {
         // User is landed to product detail page
         String actualProductDetailTitle = driver.getTitle();
         String expectedProductDetailsTitle = "Automation Exercise - Product Details";
-        Assert.assertEquals(expectedProductDetailsTitle,actualProductDetailTitle);
+        Assert.assertEquals(expectedProductDetailsTitle, actualProductDetailTitle);
 
         WebElement quantityArea = driver.findElement(By.xpath("//*[.='Quantity:']"));
         Assert.assertTrue(quantityArea.isDisplayed());

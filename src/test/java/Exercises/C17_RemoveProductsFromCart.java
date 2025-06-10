@@ -26,7 +26,7 @@ public class C17_RemoveProductsFromCart extends TestBase {
         // Verify that home page is visible successfully
         String pageExpectedTitle = "Automation Exercise";
         String pageActualTitle = driver.getTitle();
-        Assert.assertEquals(pageExpectedTitle,pageActualTitle);
+        Assert.assertEquals(pageExpectedTitle, pageActualTitle);
 
         WebElement homePageTestCasesButton = driver.findElement(By.xpath("//*[.=' Test Cases']"));
         Assert.assertTrue(homePageTestCasesButton.isDisplayed());

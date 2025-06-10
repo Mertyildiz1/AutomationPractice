@@ -33,7 +33,7 @@ public class C18_ViewCategoryProducts extends TestBase {
         assertTrue(womenDressProducts.isDisplayed());
         String expectedWomenDressPruductsText = "WOMEN - DRESS PRODUCTS";
         String actualWomenDressProductsText = womenDressProducts.getText();
-        assertEquals(expectedWomenDressPruductsText,actualWomenDressProductsText);
+        assertEquals(expectedWomenDressPruductsText, actualWomenDressProductsText);
 
         // On left side bar, click on any sub-category link of 'Men' category
         WebElement categoriesMenSelection = driver.findElement(By.xpath("(//i[@class='fa fa-plus'])[2]"));
@@ -47,6 +47,6 @@ public class C18_ViewCategoryProducts extends TestBase {
         assertTrue(menTshirtProducts.isDisplayed());
         String expectedMenTshirtPruductsText = "MEN - TSHIRTS PRODUCTS";
         String actualMenTshirtPruductsText = menTshirtProducts.getText();
-        assertEquals(expectedMenTshirtPruductsText,actualMenTshirtPruductsText);
+        assertEquals(expectedMenTshirtPruductsText, actualMenTshirtPruductsText);
     }
 }

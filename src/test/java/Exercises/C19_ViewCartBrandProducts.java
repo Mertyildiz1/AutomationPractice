@@ -34,11 +34,11 @@ public class C19_ViewCartBrandProducts extends TestBase {
         // Verify that user is navigated to brand page and brand products are displayed
         String brandPoloProductsText = driver.findElement(By.xpath("//h2[@class='title text-center']")).getText();
         String expectedBrandPoloProductText = "BRAND - POLO PRODUCTS";
-        assertEquals(expectedBrandPoloProductText,brandPoloProductsText);
+        assertEquals(expectedBrandPoloProductText, brandPoloProductsText);
 
         List<WebElement> poloProductsResult = driver.findElements(By.xpath("//i[@class='fa fa-plus-square']"));
 
-        for (int i = 0; i < poloProductsResult.size() ; i++) {
+        for (int i = 0; i < poloProductsResult.size(); i++) {
             assertTrue(poloProductsResult.get(i).isDisplayed());
         }
 
@@ -49,11 +49,11 @@ public class C19_ViewCartBrandProducts extends TestBase {
         // Verify that user is navigated to that brand page and can see products
         String brandHMProductsText = driver.findElement(By.xpath("//h2[@class='title text-center']")).getText();
         String expectedBrandHMProductText = "BRAND - H&M PRODUCTS";
-        assertEquals(expectedBrandHMProductText,brandHMProductsText);
+        assertEquals(expectedBrandHMProductText, brandHMProductsText);
 
         List<WebElement> hmProductsResult = driver.findElements(By.xpath("//i[@class='fa fa-plus-square']"));
 
-        for (int i = 0; i < hmProductsResult.size() ; i++) {
+        for (int i = 0; i < hmProductsResult.size(); i++) {
             assertTrue(hmProductsResult.get(i).isDisplayed());
         }
     }

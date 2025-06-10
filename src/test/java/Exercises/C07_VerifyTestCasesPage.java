@@ -25,7 +25,7 @@ public class C07_VerifyTestCasesPage extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Test Cases' button
         WebElement testCasesbutton = driver.findElement(By.xpath("//*[text()=' Test Cases']"));

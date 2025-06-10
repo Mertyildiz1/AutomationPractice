@@ -28,7 +28,7 @@ public class C06_ContactUsForm extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Contact Us' button
         WebElement contactUsButton = driver.findElement(By.xpath("//i[@class='fa fa-envelope']"));
@@ -40,14 +40,14 @@ public class C06_ContactUsForm extends TestBase {
 
         String expectedText = "GET IN TOUCH";
         String actualText = driver.findElement(By.xpath("//*[.='Get In Touch']")).getText();
-        Assert.assertEquals(expectedText,actualText);
+        Assert.assertEquals(expectedText, actualText);
         Thread.sleep(1000);
 
         // Enter name, email, subject and message
         WebElement nameInputArea = driver.findElement(By.cssSelector(".form-control"));
         String subject = faker.lorem().sentence(4);
         String message = faker.lorem().sentence(15);
-        nameInputArea.sendKeys(faker.name().firstName(), Keys.TAB,faker.internet().emailAddress(),Keys.TAB,subject,Keys.TAB,message);
+        nameInputArea.sendKeys(faker.name().firstName(), Keys.TAB, faker.internet().emailAddress(), Keys.TAB, subject, Keys.TAB, message);
 
         // Upload file
         String everyoneOwnPath = System.getProperty("user.home");
@@ -70,13 +70,13 @@ public class C06_ContactUsForm extends TestBase {
 
         String expectedSuccessMessage = "Success! Your details have been submitted successfully.";
         String actualSuccessMessage = successMessage.getText();
-        Assert.assertEquals(expectedSuccessMessage,actualSuccessMessage);
+        Assert.assertEquals(expectedSuccessMessage, actualSuccessMessage);
 
         //Click 'Home' button and verify that landed to home page successfully
         WebElement homeButton = driver.findElement(By.xpath("//i[@class='fa fa-angle-double-left']"));
         homeButton.click();
         WebElement featuresItemsText2 = driver.findElement(By.xpath("//h2[@class='title text-center']"));
         Assert.assertTrue(featuresItemsText2.isDisplayed());
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
     }
 }

@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class C03_LoginWithIncorrectEmailAndPassword extends TestBase {
     @Test
-    public void test03(){
+    public void test03() {
         Faker faker = new Faker();
         driver.get("http://automationexercise.com");
 
@@ -26,7 +26,7 @@ public class C03_LoginWithIncorrectEmailAndPassword extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Signup / Login' button
 
@@ -40,13 +40,13 @@ public class C03_LoginWithIncorrectEmailAndPassword extends TestBase {
 
         //Enter incorrect email address and password
         WebElement emailArea = driver.findElement(By.xpath("//*[@type='email']"));
-        emailArea.sendKeys(faker.internet().emailAddress(), Keys.TAB,faker.internet().password(),Keys.TAB,Keys.ENTER);
+        emailArea.sendKeys(faker.internet().emailAddress(), Keys.TAB, faker.internet().password(), Keys.TAB, Keys.ENTER);
 
         //Verify error 'Your email or password is incorrect!' is visible
         WebElement errorText = driver.findElement(By.xpath("//*[text()='Your email or password is incorrect!']"));
         String expectedErrorText = "Your email or password is incorrect!";
 
         Assert.assertTrue(errorText.isDisplayed());
-        Assert.assertEquals(expectedErrorText,errorText.getText());
+        Assert.assertEquals(expectedErrorText, errorText.getText());
     }
 }

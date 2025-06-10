@@ -33,7 +33,7 @@ public class C11_VerifySubscriptionInCartPage extends TestBase {
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click 'Cart' button
         WebElement cartButton = driver.findElement(By.xpath("//*[.=' Cart']"));
@@ -46,7 +46,7 @@ public class C11_VerifySubscriptionInCartPage extends TestBase {
         // Verify text 'SUBSCRIPTION'
         String actualSubText = driver.findElement(By.xpath("//*[.='Subscription']")).getText();
         String expectedSubText = "SUBSCRIPTION";
-        Assert.assertEquals(expectedSubText,actualSubText);
+        Assert.assertEquals(expectedSubText, actualSubText);
 
         // Enter email address in input and click arrow button
         WebElement subEmaılInput = driver.findElement(By.id("susbscribe_email"));
@@ -61,6 +61,6 @@ public class C11_VerifySubscriptionInCartPage extends TestBase {
 
         String actualSubAlertText = subsAlert.getText();
         String expectedSubAlertText = "You have been successfully subscribed!";
-        Assert.assertEquals(expectedSubAlertText,actualSubAlertText);
+        Assert.assertEquals(expectedSubAlertText, actualSubAlertText);
     }
 }

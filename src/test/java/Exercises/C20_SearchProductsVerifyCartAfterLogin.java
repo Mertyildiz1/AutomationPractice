@@ -31,11 +31,11 @@ public class C20_SearchProductsVerifyCartAfterLogin extends TestBase {
 
         String expectedAllProductsText = "ALL PRODUCTS";
         String actualAllProductsText = allProductsWE.getText();
-        assertEquals(expectedAllProductsText,actualAllProductsText);
+        assertEquals(expectedAllProductsText, actualAllProductsText);
 
         // Enter product name in search input and click search button
         WebElement searchInput = driver.findElement(By.id("search_product"));
-        searchInput.sendKeys("Blue Top", Keys.TAB,Keys.ENTER);
+        searchInput.sendKeys("Blue Top", Keys.TAB, Keys.ENTER);
 
         // Verify 'SEARCHED PRODUCTS' is visible
         WebElement searchedProducts = driver.findElement(By.xpath("//h2[@class='title text-center']"));
@@ -43,7 +43,7 @@ public class C20_SearchProductsVerifyCartAfterLogin extends TestBase {
 
         String expectedSearchedText = "SEARCHED PRODUCTS";
         String actualSearchedText = searchedProducts.getText();
-        assertEquals(expectedSearchedText,actualSearchedText);
+        assertEquals(expectedSearchedText, actualSearchedText);
 
         // Verify all the products related to search are visible
         WebElement brandBıba = driver.findElement(By.xpath("(//span[@class='pull-right'])[8]"));
@@ -64,14 +64,14 @@ public class C20_SearchProductsVerifyCartAfterLogin extends TestBase {
 
         String expectedBlueTopTextOnCart = "Blue Top";
         String actualBlueTopTextOnCart = blueTopWEOnCart.getText();
-        assertEquals(expectedBlueTopTextOnCart,actualBlueTopTextOnCart);
+        assertEquals(expectedBlueTopTextOnCart, actualBlueTopTextOnCart);
 
         // Click 'Signup / Login' button and submit login details
         WebElement signupLoginButton = driver.findElement(By.xpath("//*[text()=' Signup / Login']"));
         signupLoginButton.click();
 
         WebElement emailAdressInput = driver.findElement(By.name("email"));
-        emailAdressInput.sendKeys("1yildizmert@gmail.com",Keys.TAB,"test123456",Keys.TAB,Keys.ENTER);
+        emailAdressInput.sendKeys("1yildizmert@gmail.com", Keys.TAB, "test123456", Keys.TAB, Keys.ENTER);
 
         // Again, go to Cart page
         WebElement cartButton = driver.findElement(By.xpath("//*[text()=' Cart']"));
@@ -79,6 +79,6 @@ public class C20_SearchProductsVerifyCartAfterLogin extends TestBase {
         // Verify that those products are visible in cart after login as well
         blueTopWEOnCart = driver.findElement(By.xpath("//h4//a"));
         assertTrue(blueTopWEOnCart.isDisplayed());
-        assertEquals(expectedBlueTopTextOnCart,actualBlueTopTextOnCart);
+        assertEquals(expectedBlueTopTextOnCart, actualBlueTopTextOnCart);
     }
 }

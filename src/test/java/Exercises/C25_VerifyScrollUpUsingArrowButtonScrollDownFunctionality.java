@@ -18,7 +18,7 @@ public class C25_VerifyScrollUpUsingArrowButtonScrollDownFunctionality extends T
     @Test
     public void test25() throws AWTException, InterruptedException {
 
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(25));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Robot robot = new Robot();
         Actions actions = new Actions(driver);
@@ -34,7 +34,7 @@ public class C25_VerifyScrollUpUsingArrowButtonScrollDownFunctionality extends T
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Scroll down page to bottom - Verify 'SUBSCRIPTION' is visible
         Long initialY = (Long) js.executeScript("return window.pageYOffset;");

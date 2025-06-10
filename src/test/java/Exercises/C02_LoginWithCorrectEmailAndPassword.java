@@ -22,13 +22,13 @@ public class C02_LoginWithCorrectEmailAndPassword extends TestBase {
 
         //Verify that home page is visible successfully
         WebElement featuresItemsText = driver.findElement(By.xpath("//h2[@class='title text-center']"));
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOf(featuresItemsText));
         Assert.assertTrue(featuresItemsText.isDisplayed());
 
         String expectedTitle = "Automation Exercise";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         // Click on 'Signup / Login' button
         WebElement signUpLoginButton = driver.findElement(By.xpath("//*[text()=' Signup / Login']"));
@@ -41,7 +41,7 @@ public class C02_LoginWithCorrectEmailAndPassword extends TestBase {
 
         //Enter correct email address and password
         WebElement emailArea = driver.findElement(By.xpath("//*[@type='email']"));
-        emailArea.sendKeys("1yildizmert@gmail.com", Keys.TAB,"test123456",Keys.TAB,Keys.ENTER);
+        emailArea.sendKeys("1yildizmert@gmail.com", Keys.TAB, "test123456", Keys.TAB, Keys.ENTER);
 
         //Verify that 'Logged in as username' is visible
         WebElement loggedInAs = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
